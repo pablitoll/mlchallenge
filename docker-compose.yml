@@ -1,0 +1,41 @@
+version: "3"
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.8-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672    
+  trace:
+    container_name: melinodetrace
+    restart: always
+    build: ./node-trace
+    image: pmv1283/challenge:1.0.0-trace
+    ports:
+      - "3000:3000"
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq  
+  stats:
+    container_name: melinodestats
+    restart: always
+    build: ./node-stats
+    image: pmv1283/challenge:1.0.0-stats
+    ports:
+      - "3001:3001"
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq    
+  process:
+    container_name: melinodeprocess
+    restart: always
+    build: ./node-processor
+    image: pmv1283/challenge:1.0.0-processor
+    ports:
+    - "3002:3002"
+    links:
+      - rabbitmq    
+    depends_on:
+      - rabbitmq

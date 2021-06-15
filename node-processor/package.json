@@ -1,0 +1,25 @@
+{
+  "name": "meli-challenge",
+  "version": "1.0.0",
+  "description": "meli challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm app.js",
+    "debug": "nodemon --inspect -r esm app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@akanass/rx-http-request": "^3.3.0",
+    "amqplib": "^0.8.0",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "haversine": "^1.1.1",
+    "lodash": "^4.17.21",
+    "luxon": "^1.27.0",
+    "node-cache": "^5.1.2",
+    "rxjs": "^7.1.0"
+  }
+}
